@@ -3,8 +3,8 @@ import { useAuth } from '../contexts/Auth'
 import React from 'react'
 
 const DashboardUI = () => {
-    const { user } = useAuth()
-return user ? (
+    const { token } = useAuth();
+return token ? (
     <div className="content-wrapper">
         <div className="container-xxl flex-grow-1 container-p-y">
             <div className="row">

@@ -1,6 +1,5 @@
 import DashboardUI from "../components/DashboardUI"
 import Header from "../components/Header"
-import Sidemenu from "../components/Sidemenu"
 import { motion } from 'framer-motion'
 
 const Dashboard = () => {

@@ -15372,7 +15372,7 @@ html:not(.layout-menu-fixed) .menu-inner-shadow {
   }
 }
 .layout-menu {
-  position: relative;
+  position: sticky;
   flex: 1 0 auto;
 }
 .layout-menu .menu {

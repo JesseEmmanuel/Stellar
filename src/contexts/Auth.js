@@ -1,5 +1,5 @@
 import { useContext, createContext, useState, useEffect } from 'react'
-import { supabase } from '../supabase'
+import axios from 'axios'
 
 const AuthContext = createContext()
 
@@ -8,22 +8,52 @@ export const useAuth = () => {
 }
 
 export const AuthProvider = ({ children }) => {
-    const [ user, setUser ] = useState()
+    const [ token, setToken ] = useState(localStorage.getItem('token'))
+    const [ user, setUser ] = useState(JSON.parse(localStorage.getItem('user')))
 
     useEffect(() => {
-        const session = supabase.auth.session
+        localStorage.setItem('token', token)
+    }, [token])
 
-        setUser(session?.user ?? null)
+    useEffect(() => {
+        localStorage.setItem('user', JSON.stringify(user))
+    }, [user])
 
-        const { data: listener } = supabase.auth.onAuthStateChange((event, session) => {
-            setUser(session?.user ?? null)
-        })
-    }, [])
+    const signUp = (data) => {
+        console.log(data)
+    }
+
+    const signIn = async (data) => 
+    {
+        try 
+        {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/authenticate`, {
+                method:'POST',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify(data), 
+            })
+            const { token, user } = await response.json()
+            setToken(token)
+            setUser(user)
+        }
+        catch(error)
+        {
+            console.log(error)
+        }
+    }
+
+    const signOut = () => {
+        localStorage.removeItem('token')
+        localStorage.removeItem('user')
+    } 
 
     const value = {
-        register: (data) => supabase.auth.signUp(data),
-        logIn: (data) => supabase.auth.signInWithPassword(data),
-        signOut: () => supabase.auth.signOut(),
+        signUp,
+        signIn,
+        signOut,
+        token,
         user,
     }
     return <AuthContext.Provider value={value}>{ children }</AuthContext.Provider> 

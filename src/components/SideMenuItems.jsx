@@ -10,31 +10,13 @@ const SideMenuItems = ({ item }) => {
     const showSubnav = () => setSubnav(!subnav)
     return(
     <>
-        <Link className="sidebarlink" to={item.path} activeClassName="active" onClick={item.subNav && showSubnav}>
+        <Link className="sidebarlink" to={item.path} id={window.location.pathname === item.path ? "active" : ""} 
+        onClick={item.subNav && showSubnav}>
             <div>
                 {item.icon}
                 <span className='sidebarlabel'>{item.title}</span>
             </div>
-            <div>
-                {item.subNav && subnav
-                    ? item.iconOpened
-                    : item.subNav
-                    ? item.iconClosed
-                    : null}
-            </div>
         </Link>
-        {subnav && item.subNav.map((item, index) => {
-            return (
-                <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}>
-                <Link className="dropdownlink" activeClassName="active" to={item.path} key={index}>
-                    {item.icon}
-                    <span className='sidebarlabel'>{item.title}</span>
-                </Link>
-                </motion.div>
-            )
-        })}
     </>
     )
     

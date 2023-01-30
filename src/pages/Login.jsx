@@ -1,10 +1,10 @@
-import LoginForm from "../components/LoginForm"
 import { motion } from "framer-motion"
 import { useState } from 'react'
-import { Badge } from 'react-bootstrap'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/Auth'
 import { Form, Button } from 'react-bootstrap'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
     const navigate = useNavigate()
@@ -14,20 +14,19 @@ const Login = () => {
         password: ''
     })
 
-    const { logIn } = useAuth()
+    const { signIn } = useAuth()
     
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const { error } = await logIn(formData)
-
-        if(error){
-            alert('error signing up')
-        }
-        else{
+        try {
+            await signIn(formData)
             navigate('/Dashboard')
-        }
+          } catch (error) {
+            alert('error signing in')
+          }
     }
+
 return (
 <motion.div className="authentication-wrapper authentication-basic container-p-y" initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}>
@@ -42,7 +41,7 @@ return (
                     </a>
                 </div>
                 <div className="d-flex justify-content-center mb-3">
-                    <h4 className="mb-2">Welcome to Stellar! 👋</h4>
+                    <h4 className="mb-2">Welcome to Stellar! ⭐</h4>
                 </div>
                 <Form onSubmit={handleSubmit} id='formAuthentication' className='mb-3'>
                     <div className="mb-3">
@@ -51,36 +50,18 @@ return (
                         </Form.Control>
                     </div>
                     <div className="mb-3 form-password-toggle">
-                        <div className="d-flex justify-content-between">
-                            <a href="auth-forgot-password-basic.html">
-                                <small>Forgot Password?</small>
-                            </a>
-                        </div>
                         <div className="input-group input-group-merge">
-                            <Form.Control type="password" id="password" className='form-control' onChange={(e)=>
-                                setFormData({...formData, password:e.target.value})}>
+                            <Form.Control type="password" id="password" className='form-control' 
+                            placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" 
+                            onChange={(e)=> setFormData({...formData, password:e.target.value})}>
                             </Form.Control>
                             <span className="input-group-text cursor-pointer"><i className="bx bx-hide"></i></span>
                         </div>
                     </div>
                     <div className="mb-3">
-                        <div className="form-check">
-                            <input className="form-check-input" type="checkbox" id="remember-me" />
-                            <label className="form-check-label" for="remember-me"> Remember Me </label>
-                        </div>
-                    </div>
-                    <div className="mb-3">
-                        <Button variant='primary' className='btn btn-primary d-grid w-100' type="submit">Sign
-                            Up</Button>
+                        <Button variant='primary' className='btn btnprimary d-grid w-100' type="submit"> Log in </Button>
                     </div>
                 </Form>
-
-                <p className="text-center">
-                    <span>Dont have an account yet?</span>
-
-                    <Badge bg="white" className="text-warning" as={Link} to="/Register">Sign up here</Badge>
-
-                </p>
             </div>
         </div>
     </div>

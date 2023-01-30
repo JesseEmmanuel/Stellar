@@ -20,11 +20,14 @@ const LoginForm = () => {
 
         const { error } = await logIn(formData)
 
-        if(error){
-            alert('error Logging In')
-        }
-        else {
+        try{
+            await logIn(formData)
             navigate('/Dashboard')
+        }
+        catch(error)
+        {
+            alert('error Logging In')
+            console.log(error)
         }
     }
 return (
