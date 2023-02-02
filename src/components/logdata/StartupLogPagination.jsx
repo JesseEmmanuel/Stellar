@@ -1,5 +1,4 @@
 import React from 'react'
-import { Pagination } from 'react-bootstrap';
 
 function StartupLogPagination({ rowPerPage, totalRows, paginate }) {
     const pageNumbers = [];
@@ -11,7 +10,7 @@ function StartupLogPagination({ rowPerPage, totalRows, paginate }) {
         <ul className="pagination">
             {pageNumbers.map(number => (
                 <li className="page-item">
-                    <a className="page-link" onClick={() => paginate(number)} href="javascript:void(0);">{number}</a>   
+                    <a className="page-link" onClick={() => paginate(number)} href="#0">{number}</a>   
                 </li>
             ))}
         </ul>

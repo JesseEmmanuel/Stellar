@@ -45,13 +45,13 @@ return (
                 <div class="card-group mb-5">
                     <div class="card">
                         <img class="card-img" src={process.env.PUBLIC_URL+ "/assets/img/activestar-v2.png" }
-                            alt="Card image cap" />
+                            alt="" />
                         <div class="card-body">
                             <div class="d-flex justify-content-center mb-2">
-                                <img src={process.env.PUBLIC_URL+ "/stellar/app/assets/img/avatars/1.png" } alt
+                                <img src={process.env.PUBLIC_URL+ "/stellar/app/assets/img/avatars/1.png" } alt=""
                                     class="w-px-40 h-auto rounded-circle" />
                             </div>
-                            <a href="#">
+                            <a href="/Dashboard">
                                 <div class="d-flex justify-content-center">
                                     <span class="badge bg-primary">
                                         Juan Dela Cruz<br />
@@ -62,13 +62,13 @@ return (
                     </div>
                     <div class="card">
                         <img class="card-img-top" src={process.env.PUBLIC_URL+ "/assets/img/activestar-v3.png" }
-                            alt="Card image cap" />
+                            alt="" />
                         <div class="card-body">
                             <div class="d-flex justify-content-center mb-2">
-                                <img src={process.env.PUBLIC_URL+ "/assets/img/profile.png" } alt
+                                <img src={process.env.PUBLIC_URL+ "/assets/img/profile.png" } alt=""
                                     class="w-px-40 h-auto rounded-circle" />
                             </div>
-                            <a href="#">
+                            <a href="/Dashboard">
                                 <div class="d-flex justify-content-center">
                                     <span class="badge bg-primary">
                                         Juan Dela Cruz<br />
@@ -79,13 +79,13 @@ return (
                     </div>
                     <div class="card">
                         <img class="card-img-top" src={process.env.PUBLIC_URL+ "/assets/img/activestar-v3.png" }
-                            alt="Card image cap" />
+                            alt="" />
                         <div class="card-body">
                             <div class="d-flex justify-content-center mb-2">
-                                <img src={process.env.PUBLIC_URL+ "/assets/img/avatars/7.png" } alt
+                                <img src={process.env.PUBLIC_URL+ "/assets/img/avatars/7.png" } alt=""
                                     class="w-px-40 h-auto rounded-circle" />
                             </div>
-                            <a href="#">
+                            <a href="/Dashboard">
                                 <div class="d-flex justify-content-center">
                                     <span class="badge bg-primary">
                                         Juan Dela Cruz<br />
@@ -96,13 +96,13 @@ return (
                     </div>
                     <div class="card">
                         <img class="card-img-top" src={process.env.PUBLIC_URL+ "/assets/img/activestar-v3.png" }
-                            alt="Card image cap" />
+                            alt="" />
                         <div class="card-body">
                             <div class="d-flex justify-content-center mb-2">
-                                <img src={process.env.PUBLIC_URL+ "/assets/img/avatars/6.png" } alt
+                                <img src={process.env.PUBLIC_URL+ "/assets/img/avatars/6.png" } alt=""
                                     class="w-px-40 h-auto rounded-circle" />
                             </div>
-                            <a href="#">
+                            <a href="/Dashboard">
                                 <div class="d-flex justify-content-center">
                                     <span class="badge bg-primary">
                                         Juan Dela Cruz<br />
@@ -113,13 +113,13 @@ return (
                     </div>
                     <div class="card">
                         <img class="card-img-top" src={process.env.PUBLIC_URL+ "/assets/img/activestar-v3.png" }
-                            alt="Card image cap" />
+                            alt="" />
                         <div class="card-body">
                             <div class="d-flex justify-content-center mb-2">
-                                <img src={process.env.PUBLIC_URL+ "/assets/img/avatars/5.png" } alt
+                                <img src={process.env.PUBLIC_URL+ "/assets/img/avatars/5.png" } alt=""
                                     class="w-px-40 h-auto rounded-circle" />
                             </div>
-                            <a href="#">
+                            <a href="/Dashboard">
                                 <div class="d-flex justify-content-center">
                                     <span class="badge bg-primary">
                                         Juan Dela Cruz<br />
@@ -130,10 +130,10 @@ return (
                     </div>
                     <div class="card">
                         <img class="card-img-top" src={process.env.PUBLIC_URL+ "/assets/img/inactivestar.png" }
-                            alt="Card image cap" />
+                            alt="" />
                         <div class="card-body">
                             <div class="d-flex justify-content-center">
-                                <img src={process.env.PUBLIC_URL+ "/assets/img/profile.png" } alt
+                                <img src={process.env.PUBLIC_URL+ "/assets/img/profile.png" } alt=""
                                     class="w-px-40 h-auto rounded-circle" />
                             </div>
                             <div class="d-flex justify-content-center">

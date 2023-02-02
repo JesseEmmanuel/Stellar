@@ -1,14 +1,11 @@
 //import { Link, NavLink } from 'react-router-dom'
 //import { useState } from 'react';
 //import { Nav, Dropdown } from 'react-bootstrap'
-import styled from 'styled-components';
-import { Dashboard, Genealogy, Wallet, Rewards, MenuItems } from './SidebarData';
+import { MenuItems } from './SidebarData';
 import SubMenu from './SideMenuItems';
-import { useAuth } from '../contexts/Auth';
 import '../App.css'
 
 const Sidemenu = () => {
-    const user = useAuth()
     return(
         <aside id="layout-menu-fixed" className="layout-menu menu-vertical menu bg-menu-theme">
                 <div className='logo' to="#">

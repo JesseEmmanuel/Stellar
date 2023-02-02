@@ -6,11 +6,11 @@ import axios from "axios";
 
 function Logs() {
 
-    const { user, token } = useAuth()
+    const { token } = useAuth()
     const [startupLogs, setStartupLogs] = useState([])
     const dataFetchedRef = useRef(false)
     const [currentPage, setCurrentPage] = useState(1);
-    const [rowPerPage, setRowPerPage] = useState(10);
+    const [rowPerPage] = useState(10);
 
     const getStartupLogs = async () => {
         const apiStartupLogs = await axios.get(`${process.env.REACT_APP_API_URL}/startupLogs`, {
@@ -28,7 +28,7 @@ function Logs() {
         }
         dataFetchedRef.current = true;
         getStartupLogs();
-    }, []);
+    });
 
 // Get current Data
     const indexOfLastData = currentPage * rowPerPage;

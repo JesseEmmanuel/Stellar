@@ -1,8 +1,7 @@
 import React from 'react'
 //import { NavItem } from 'react-bootstrap'
-import { Link, NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useState } from 'react'
-import { motion } from 'framer-motion'
 
 const SideMenuItems = ({ item }) => {
     const [subnav, setSubnav] = useState(false)
