@@ -8,12 +8,9 @@ import Dashboard from '../pages/Dashboard';
 import Profile from '../pages/Profile';
 import GenStartup from '../pages/genealogy/StartupSavings';
 import GenGreat from '../pages/genealogy/GreatSavings';
-import GenLogs from '../pages/genealogy/Logs'
-import WalletStartup from '../pages/wallet/StartupSavings'
-import WalletGreat from '../pages/wallet/GreatSavings'
-import History from '../pages/wallet/History';
-import CheckRewards from '../pages/rewards/Check_Rewards';
-import RedemptionHistory from '../pages/rewards/Redemption_History';
+import CheckRewards from '../pages/rewards/CheckRewards';
+import Logs from '../pages/Logs';
+import DirectReferral from '../pages/DirectReferrals';
 import { AnimatePresence } from 'framer-motion';
 import { AuthProvider } from '../contexts/Auth';
 
@@ -35,12 +32,9 @@ return (
           <Route path='/Profile' element={<Profile />}></Route>
           <Route path='/genealogy/StartupSavings' element={<GenStartup />}></Route>
           <Route path='/genealogy/GreatSavings' element={<GenGreat />}></Route>
-          <Route path='/genealogy/Logs' element={<GenLogs />}></Route>
-          <Route path='/wallet/StartupSavings' element={<WalletStartup />}></Route>
-          <Route path='/wallet/GreatSavings' element={<WalletGreat />}></Route>
-          <Route path='/wallet/History' element={<History />}></Route>
-          <Route path='/rewards/Check_Rewards' element={<CheckRewards />}></Route>
-          <Route path='/rewards/Redemption_History' element={<RedemptionHistory />}></Route>
+          <Route path='/StarRewards' element={<CheckRewards />}></Route>
+          <Route path='/Logs' element={<Logs />}></Route>
+          <Route path='/DirectReferrals/:id/view' element={<DirectReferral />}></Route>
           </Route>
         </Routes>
       </AuthProvider>

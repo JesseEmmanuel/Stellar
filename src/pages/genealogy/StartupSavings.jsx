@@ -1,5 +1,4 @@
 import Header from "../../components/Header"
-import Sidemenu from "../../components/Sidemenu"
 import StartupUI from "../../components/genealogy/StartupUI"
 import { motion } from "framer-motion"
 

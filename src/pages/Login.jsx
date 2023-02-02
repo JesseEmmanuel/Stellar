@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/Auth'
 import { Form, Button } from 'react-bootstrap'
-import { ToastContainer, toast } from 'react-toastify';
+// import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
@@ -23,7 +23,7 @@ const Login = () => {
             await signIn(formData)
             navigate('/Dashboard')
           } catch (error) {
-            alert('error signing in')
+            navigate('/')
           }
     }
 

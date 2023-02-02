@@ -4,6 +4,7 @@ import { useAuth } from '../../contexts/Auth';
 import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Link } from 'react-router-dom';
 
 function StartupUI() {
 
@@ -49,17 +50,21 @@ function StartupUI() {
             });
             getUsers();
             toast.success("User Added Successfully");
+            handleClose();
+            setErrors([]);
         }
         catch(e) {
             if(e.response.status === 400){
                 setErrors(e.response.data.errors);
-                toast.error(e.response.data.message);
+                // toast.error(e.response.data.message);
             }
             if(e.response.status === 401){
                 toast.error(e.response.data.message);
+                handleClose();
             }
             if(e.response.status === 402){
                 toast.error(e.response.data.message);
+                handleClose();
             }
         }
     }
@@ -129,11 +134,17 @@ return (
                                     <img src={process.env.PUBLIC_URL+ "/assets/img/activestar-v2.png" } alt=""
                                         className="w-px-40 h-auto rounded-circle" />
                                 </div>
-                                    <div className="d-flex justify-content-center">
+                                <div className="d-flex justify-content-center">
                                         <span className="badge bg-warning">
                                             {user.firstName}, {user.lastName} <br />
                                         </span>
-                                    </div>
+                                </div>
+                                    <br />
+                                <div className="d-flex justify-content-center">
+                                    <span className="badge bg-secondary">
+                                        <Link to={`/DirectReferrals/${user.id}/view`} className="text-white"> <i class='mb-1 bx bx-show-alt'></i> View </Link> <br />
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -220,7 +231,7 @@ return (
                             <Button className='mx-1' variant="secondary" onClick={handleClose}>
                                 Close
                             </Button>
-                            <Button className='mx-1' variant="primary" type='submit' onClick={handleClose}>
+                            <Button className='mx-1' variant="primary" type='submit'>
                                 Submit
                             </Button>
                         </Form>

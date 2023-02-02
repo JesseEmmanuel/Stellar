@@ -1,16 +1,15 @@
 import React from 'react'
-import Sidemenu from '../../components/Sidemenu'
 import Header from '../../components/Header'
-import Check_RewardsUI from '../../components/rewards/Check_RewardsUI'
+import CheckRewardsUI from '../../components/rewards/CheckRewardsUI'
 import { motion } from 'framer-motion'
 
-function Check_Rewards() {
+function CheckRewards() {
 return (
 <motion.div className="layout-page" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
     <Header />
-    <Check_RewardsUI />
+    <CheckRewardsUI />
 </motion.div>
 )
 }
 
-export default Check_Rewards
+export default CheckRewards

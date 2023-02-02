@@ -1,5 +1,4 @@
 import Header from "../../components/Header"
-import Sidemenu from "../../components/Sidemenu"
 import GreatUI from "../../components/genealogy/GreatUI"
 import { motion } from "framer-motion"
 

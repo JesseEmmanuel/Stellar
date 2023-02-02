@@ -3,7 +3,6 @@ import * as RiIcons from 'react-icons/ri'
 import * as TbIcons from 'react-icons/tb'
 import * as BiIcons from 'react-icons/bi'
 import * as IoIcons from 'react-icons/io'
-import * as GiIcons from 'react-icons/gi'
 
 export const MenuItems = [
     {
@@ -23,12 +22,12 @@ export const MenuItems = [
     },
     {
         title: 'Star Rewards',
-        path: '/rewards/Check_Rewards',
+        path: '/StarRewards',
         icon: <IoIcons.IoIosGift/>,
     },
     {
-        title: 'Transactions',
-        path: '/genealogy/Logs',
+        title: 'Transactions/Logs',
+        path: '/Logs',
         icon: <BiIcons.BiTransfer/>,
     },
 

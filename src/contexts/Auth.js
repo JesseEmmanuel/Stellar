@@ -1,5 +1,5 @@
 import { useContext, createContext, useState, useEffect } from 'react'
-import axios from 'axios'
+// import axios from 'axios'
 
 const AuthContext = createContext()
 
@@ -9,7 +9,9 @@ export const useAuth = () => {
 
 export const AuthProvider = ({ children }) => {
     const [ token, setToken ] = useState(localStorage.getItem('token'))
-    const [ user, setUser ] = useState(JSON.parse(localStorage.getItem('user')))
+    // const [ user, setUser ] = useState(JSON.parse(localStorage.getItem('user')))
+    const [ user, setUser ] = useState(localStorage.getItem('user'))
+    // const [ error, setError ] = useState([]);
 
     useEffect(() => {
         localStorage.setItem('token', token)

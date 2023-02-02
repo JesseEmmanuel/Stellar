@@ -1,10 +1,31 @@
-import { Navigate } from 'react-router-dom'
 import { useAuth } from '../contexts/Auth'
+import { useState, useEffect, useRef } from 'react'
+import axios from 'axios'
 import React from 'react'
 
 const DashboardUI = () => {
     const { token } = useAuth();
-return token ? (
+    const [rebate, setRebate] = useState([]);
+    const dataFetchedRef = useRef(false);
+
+    const getRebate = async () => {
+        const apiRebate = await axios.get(`${process.env.REACT_APP_API_URL}/totalRebate`, {
+            headers:{
+               'Authorization':`Bearer ${token}`, 
+            }
+        })
+        setRebate(apiRebate.data.rebate);
+    }
+
+    useEffect(() => {
+        if(dataFetchedRef.current) 
+        {
+            return;
+        }
+        dataFetchedRef.current = true;
+        getRebate()
+    })
+return (
     <div className="content-wrapper">
         <div className="container-xxl flex-grow-1 container-p-y">
             <div className="row">
@@ -41,9 +62,13 @@ return token ? (
                             <h6 className="card-text text-white">
                                 Cycle No:1
                             </h6>
-                            <p clas="mb-4"><strong className="text-white">Rebate Balance</strong> <span
-                                    className="badge bg-warning">Php
-                                    100,000.00</span></p>
+                            <p clas="mb-4"><strong className="text-white">Rebate Balance</strong> 
+                            </p>
+                            <h2>
+                            <span
+                                className="badge bg-warning">₱ {rebate}.00
+                                </span>
+                            </h2>
 
                             <p className="demo-inline-spacing">
                                 <a className="btn btn-outline-dark mx-2" href="/"
@@ -66,14 +91,17 @@ return token ? (
                             <h6 className="card-text text-white">
                                 Cycle No:1
                             </h6>
-                            <p clas="mb-1"><strong className="text-white">Rebate Balance</strong> <span
-                                    className="badge bg-primary">Php
-                                    100,000.00</span></p>
+                            <p clas="mb-1"><strong className="text-white">Rebate Balance</strong> 
+                            </p>
+                            <h2>
+                                <span
+                                    className="badge bg-primary">Working in Progress ...
+                                </span>
+                            </h2>
                             <p className="demo-inline-spacing">
                                 <a className="btn btn-outline-primary mx-2" href="/"
                                     style={{pointerEvents: "none", borderColor:"white"}}>
-                                    <i className='bx bxs-star text-white'></i><span className="text-white">10,000
-                                        points</span>
+                                    <i className='bx bxs-star text-white'></i><span className="text-white">Working in Progress ...</span>
                                 </a>
                                 <a className="btn btn-primary" href="/">
                                     <i className='bx bxs-wallet mb-1'></i> Encash
@@ -85,9 +113,10 @@ return token ? (
             </div>
         </div>
     </div>
-) : ( 
-    <Navigate to="/" replace/>
- )
+) 
+// : ( 
+//     <Navigate to="/" replace/>
+//  );
 }
 
 export default DashboardUI

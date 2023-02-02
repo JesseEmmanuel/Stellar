@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Check_RewardsUI() {
+function CheckRewardsUI() {
   return (
     <div class="content-wrapper">
     <div class="container-xxl flex-grow-1 container-p-y">
@@ -46,9 +46,7 @@ function Check_RewardsUI() {
                             </li>
                             <br />
                             <div class="d-flex flex-row-reverse">
-                                <a class="btn btn-primary" href="#">
-                                    <i class='bx bxs-plus-circle'></i> Redeem
-                                </a>
+                                <i class='bx bxs-plus-circle'></i> Redeem
                             </div>
                         </ul>
                     </div>
@@ -85,4 +83,4 @@ function Check_RewardsUI() {
   )
 }
 
-export default Check_RewardsUI
+export default CheckRewardsUI

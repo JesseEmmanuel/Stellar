@@ -1,5 +1,4 @@
 import React from 'react'
-import Sidemenu from '../../components/Sidemenu'
 import Header from '../../components/Header'
 import GenLogs from '../../components/genealogy/Logs'
 import { motion } from 'framer-motion'

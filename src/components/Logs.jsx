@@ -1,12 +1,16 @@
-import { useAuth } from '../../contexts/Auth'
-import { useState, useEffect, useRef } from 'react'
-import axios from 'axios'
+import { useAuth } from "../contexts/Auth";
+import { useState, useEffect, useRef } from "react";
+import StartupLogPagination from "./logdata/StartupLogPagination";
+import StartupLogData from "./logdata/StartupLogData";
+import axios from "axios";
 
 function Logs() {
 
     const { user, token } = useAuth()
     const [startupLogs, setStartupLogs] = useState([])
     const dataFetchedRef = useRef(false)
+    const [currentPage, setCurrentPage] = useState(1);
+    const [rowPerPage, setRowPerPage] = useState(10);
 
     const getStartupLogs = async () => {
         const apiStartupLogs = await axios.get(`${process.env.REACT_APP_API_URL}/startupLogs`, {
@@ -24,12 +28,22 @@ function Logs() {
         }
         dataFetchedRef.current = true;
         getStartupLogs();
-    })
+    }, []);
+
+// Get current Data
+    const indexOfLastData = currentPage * rowPerPage;
+    const indexOfFirstData = indexOfLastData - rowPerPage;
+    const currentData = startupLogs.slice(indexOfFirstData, indexOfLastData);
+    // console.log(currentData);
+
+// Change Page
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
 
 return (
 <div className="content-wrapper">
     <div className="container-xxl flex-grow-1 container-p-y">
-        <h5 className="py-3 my-4">Genealogy/Logs</h5>
+        <h5 className="py-3 my-4">Transaction/Logs</h5>
 
         <div className="row">
             <div className="col-xl-12">
@@ -55,7 +69,6 @@ return (
                                 <table className="table card-table">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
                                             <th>New User</th>
                                             <th>Sponsor</th>
                                             <th>Updated Rebates</th>
@@ -63,25 +76,9 @@ return (
                                             <th>Date/Time</th>
                                         </tr>
                                     </thead>
-                                    <tbody className="table-border-bottom-0">
-                                        {startupLogs.map((log) => {
-                                            return (
-                                                <tr key={log.id}>
-                                                    <td><i className="fab fa-angular fa-lg text-danger me-3"></i>
-                                                        <strong>{log.id}</strong>
-                                                    </td>
-                                                    <td>
-                                                        {log.addedUser}
-                                                    </td>
-                                                    <td>{log.addedBy}</td>
-                                                    <td>₱ {log.totalRebate}.00</td>
-                                                    <td>({log.totalStars}) ⭐</td>
-                                                    <td><span className="badge bg-label-primary me-1">{log.created_at}</span></td>
-                                        </tr>
-                                            )
-                                        })}
-                                    </tbody>
+                                    <StartupLogData startupLogs={currentData} />
                                 </table>
+                                <StartupLogPagination rowPerPage={rowPerPage} totalRows={startupLogs.length} paginate={paginate} />
                             </div>
                         </div>
                         <div className="tab-pane fade" id="great" role="tabpanel">

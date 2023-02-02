@@ -1,6 +1,5 @@
 import React from 'react'
 import Header from "../components/Header"
-import Sidemenu from "../components/Sidemenu"
 import ProfileContent from '../components/ProfileContent'
 import { motion } from 'framer-motion'
 
